@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Astrammo</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" type="image/png" href="assets/logo.png" />
+    </head>
+    <body>
+        <div id="startMenu" class="menu">
+            <div class="logo-container">
+                <img
+                    src="assets/logo.png"
+                    alt="Astrammo Logo"
+                    class="game-logo"
+                />
+            </div>
+            <h1>Astrammo</h1>
+            <button id="startButton">Start Game</button>
+            <button id="startShopButton" class="shop-button">Shop</button>
+            <button id="startHowToPlayButton" class="how-to-play-button">
+                How to Play
+            </button>
+            <div class="instructions">
+                <h2>Controls:</h2>
+                <p>↑ - Move Up</p>
+                <p>↓ - Move Down</p>
+                <p>← - Move Left</p>
+                <p>→ - Move Right</p>
+                <p>Space - Shoot</p>
+                <p>P - Pause Game</p>
+                <h2>Game Rules:</h2>
+                <p>• Start with 10 ammo</p>
+                <p>• Each shot uses 1 ammo</p>
+                <p>• Kill enemies to get +10 ammo</p>
+                <p>• No ammo = No shooting!</p>
+                <p>• Get 1 coin for each enemy killed</p>
+            </div>
+        </div>
+
+        <div id="gameContainer" class="hidden">
+            <canvas id="gameCanvas"></canvas>
+            <div id="score">Score: <span id="scoreValue">0</span></div>
+            <div id="lives">Lives: <span id="livesValue">3</span></div>
+            <div class="resources">
+                <div id="ammo">Ammo: <span id="ammoValue">10</span></div>
+                <div id="coins">Coins: <span id="coinsValue">0</span></div>
+            </div>
+            <button id="pauseButton" class="pause-button">⏸</button>
+        </div>
+
+        <div id="pauseMenu" class="menu hidden">
+            <div class="logo-container small">
+                <img
+                    src="assets/logo.png"
+                    alt="Astrammo Logo"
+                    class="game-logo"
+                />
+            </div>
+            <h1>Game Paused</h1>
+            <button id="resumeButton">Resume Game</button>
+            <button id="pauseShopButton" class="shop-button">Shop</button>
+            <button id="pauseHowToPlayButton" class="how-to-play-button">
+                How to Play
+            </button>
+            <button id="backToMenuButton">Back to Menu</button>
+            <button class="placeholder-button">Settings</button>
+            <button class="placeholder-button">High Scores</button>
+        </div>
+
+        <div id="howToPlayMenu" class="menu hidden">
+            <div class="logo-container small">
+                <img
+                    src="assets/logo.png"
+                    alt="Astrammo Logo"
+                    class="game-logo"
+                />
+            </div>
+            <h1>How to Play</h1>
+            <div class="how-to-play-content">
+                <h2>Game Overview</h2>
+                <p>
+                    Astrammo is an action-packed arcade game where you defend
+                    against waves of enemy ships.
+                </p>
+
+                <h2>Basic Controls</h2>
+                <ul>
+                    <li>Arrow Keys: Move your ship</li>
+                    <li>Spacebar: Shoot</li>
+                    <li>P: Pause game</li>
+                </ul>
+
+                <h2>Game Mechanics</h2>
+                <ul>
+                    <li>Start with 10 ammo and 3 lives</li>
+                    <li>Each shot uses 1 ammo</li>
+                    <li>Kill enemies to get +10 ammo</li>
+                    <li>No ammo = No shooting!</li>
+                    <li>Get coins for each enemy killed</li>
+                </ul>
+
+                <h2>Enemy Types</h2>
+                <ul>
+                    <li>Basic Enemy: Moves straight down, 1 hit to destroy</li>
+                    <li>
+                        Zigzag Enemy: Moves in wave pattern, 2 hits to destroy
+                    </li>
+                    <li>Kamikaze Enemy: Chases player, 1 hit to destroy</li>
+                    <li>
+                        Boss Enemy: Large enemy with 10 health, shoots at player
+                    </li>
+                </ul>
+
+                <h2>Power-ups</h2>
+                <ul>
+                    <li>Blue Orb: +20 ammo</li>
+                    <li>Green Orb: Temporary shield (10 seconds)</li>
+                    <li>Red Orb: Rapid fire (5 seconds)</li>
+                </ul>
+
+                <h2>Combo System</h2>
+                <ul>
+                    <li>Build combos by destroying enemies quickly</li>
+                    <li>Combo resets after 2 seconds of no hits</li>
+                    <li>Higher combos = Higher score multiplier</li>
+                    <li>+10% score per combo level</li>
+                </ul>
+
+                <h2>Shop System</h2>
+                <ul>
+                    <li>Use coins to buy new ships</li>
+                    <li>Gray Ship: Default ship</li>
+                    <li>Blue Ship: 100 coins</li>
+                    <li>Red Ship: 200 coins</li>
+                </ul>
+            </div>
+            <button id="closeHowToPlayButton">Close</button>
+        </div>
+
+        <div id="shopMenu" class="menu hidden">
+            <div class="logo-container small">
+                <img
+                    src="assets/logo.png"
+                    alt="Astrammo Logo"
+                    class="game-logo"
+                />
+            </div>
+            <h1>Ship Shop</h1>
+            <div class="shop-items">
+                <div class="shop-item">
+                    <img
+                        src="assets/Gray Ship.png"
+                        alt="Gray Ship"
+                        class="shop-ship-image"
+                    />
+                    <h3>Gray Ship</h3>
+                    <p>Default Ship</p>
+                    <button
+                        class="select-ship-button"
+                        data-ship="gray"
+                        disabled
+                    >
+                        Selected
+                    </button>
+                </div>
+                <div class="shop-item">
+                    <img
+                        src="assets/Blue Ship.png"
+                        alt="Blue Ship"
+                        class="shop-ship-image"
+                    />
+                    <h3>Blue Ship</h3>
+                    <p>Cost: 100 coins</p>
+                    <button class="select-ship-button" data-ship="blue">
+                        Buy
+                    </button>
+                </div>
+                <div class="shop-item">
+                    <img
+                        src="assets/Red Ship.png"
+                        alt="Red Ship"
+                        class="shop-ship-image"
+                    />
+                    <h3>Red Ship</h3>
+                    <p>Cost: 200 coins</p>
+                    <button class="select-ship-button" data-ship="red">
+                        Buy
+                    </button>
+                </div>
+            </div>
+            <button id="closeShopButton">Close Shop</button>
+        </div>
+
+        <div id="gameOver" class="menu hidden">
+            <div class="logo-container small">
+                <img
+                    src="assets/logo.png"
+                    alt="Astrammo Logo"
+                    class="game-logo"
+                />
+            </div>
+            <h1>Game Over</h1>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <button id="restartButton">Play Again</button>
+            <button id="gameOverMenuButton" class="menu-button">
+                Back to Menu
+            </button>
+        </div>
+
+        <script src="game.js"></script>
+    </body>
+</html>
