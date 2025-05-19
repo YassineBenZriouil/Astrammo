@@ -27,7 +27,7 @@ A fun and engaging mini-game built with vanilla JavaScript, CSS, and HTML. Astra
 1. Clone the repository:
 
     ```bash
-    git clone [your-repository-url]
+    git clone https://github.com/YassineBenZriouil/Astrammo
     ```
 
 2. Navigate to the project directory:
@@ -38,9 +38,6 @@ A fun and engaging mini-game built with vanilla JavaScript, CSS, and HTML. Astra
 
 3. Open `index.html` in your web browser to start playing!
 
-## 🎮 How to Play
-
-[Add specific game instructions here]
 
 ## 🏗️ Project Structure
 
@@ -56,15 +53,8 @@ Astrammo/
 
 Contributions are welcome! Feel free to submit issues and pull requests.
 
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ## 👥 Author
 
-[Your Name]
+Yassine Ben Zriouil
 
-## 🙏 Acknowledgments
 
--   Thanks to all contributors and supporters
--   Inspired by [mention any inspiration if applicable]
